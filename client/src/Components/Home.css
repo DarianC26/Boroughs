@@ -1,0 +1,49 @@
+@font-face {
+    font-family: Bajigoor;
+    src: url(./Assets/Bajigoor-X3P5a.ttf);
+  }
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.home_wrapper {
+    width: 100vw;
+    height: 80%;
+    background-color: #FFFF93;
+    border-bottom: 2px solid #ffff1b;
+    display: grid;
+    grid-template-rows: 10% 90%;
+}
+
+.image_wrapper {
+    height: 100%;
+    width: 100%;
+    background-image: url(./images/final_background.png);
+    background-size: 60vw 65vh;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.nav_bar {
+    height: 10vh;
+    width: 100vw;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+    font-family: Bajigoor;
+    color: rgb(104, 104, 255);
+    text-align: center;
+    text-decoration: none;
+    justify-content: center;
+  }
