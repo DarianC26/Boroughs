@@ -22,8 +22,25 @@ app.get('/sample/:id', (req, res) => {
     res.send(id);
 });
 
-app.get('/getUser', (req,res) => {
-    console.log(req);
+app.post('/loginUser', async (req, res) => {
+    try {
+        const user = await UserModel.findOne({ username: req.body.username });
+        if (user) {
+            const result = req.body.password === user.password;
+            if (result) {
+                res.send(user);
+            }
+            else {
+                res.status(400).json({ error: "password doesn't match" });
+            }
+        }
+        else {
+            res.status(400).json({ error: "User doesn't exist" });
+        }
+    }
+    catch (error) {
+        res.status(400).json({ error });
+    }
 });
 
 app.post('/createUser', async (req, res) => {

@@ -12,13 +12,20 @@ export default function Login() {
 
     const [text, setText] = useState('Login');
 
-    function loginUser() {
+    function loginUse() {
         axios.get("http://localhost:3001/getUser").then((response) => {
-            if(response.data === "Hi") {
-                window.location.href = 'http://localhost:3000/';
-            }
+          console.log(response);
         })
     }
+
+    function loginUser() {
+      axios.post("http://localhost:3001/loginUser", {
+        username,
+        password
+    }).then((response) => {
+      console.log(response)
+    });
+  }
 
   return (
     <div className='login_container'>
