@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const UserModel = require("./models/user.js");
 const CommunityModel = require("./models/communities.js");
-const PostModel = require("./models/communities.js");
+const PostModel = require("./models/posts.js");
 require('dotenv/config');
 
 const cors = require("cors");
@@ -52,6 +52,21 @@ app.post('/createUser', async (req, res) => {
   
     res.json(user);
     console.log(user);
+});
+
+app.post('/createPost', async (req, res) => {
+    const post = req.body;
+    const newPost = new PostModel(post);
+    await newPost.save();
+  
+    res.json(newPost);
+    console.log(newPost);
+});
+
+app.post('/createCommunity', async (req, res) => {
+    const community = req.body;
+    const newCommunity = new CommunityModel(community);
+    await newCommunity.save();
 });
 
 app.listen(3001);

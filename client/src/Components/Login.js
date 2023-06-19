@@ -6,17 +6,6 @@ export default function Login() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [fullname, setName] = useState('');
-    const [age, setAge] = useState(0);
-    const [email, setEmail] = useState('');
-
-    const [text, setText] = useState('Login');
-
-    function loginUse() {
-        axios.get("http://localhost:3001/getUser").then((response) => {
-          console.log(response);
-        })
-    }
 
     function loginUser() {
       axios.post("http://localhost:3001/loginUser", {
@@ -45,5 +34,5 @@ export default function Login() {
           <button onClick={loginUser}> Register </button>
         </div>
     </div>
-  )
+  );
 }
