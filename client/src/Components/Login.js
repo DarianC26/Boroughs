@@ -23,7 +23,8 @@ export default function Login() {
         username,
         password
     }).then((response) => {
-      console.log(response)
+      localStorage.setItem("user", JSON.stringify(response.data));
+      window.location.href = 'http://localhost:3000/feed';
     });
   }
 

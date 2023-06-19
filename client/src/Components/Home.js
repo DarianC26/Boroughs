@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import styles from './Home.css'
+import './Home.css'
 import {Link} from 'react-router-dom';
 import image1 from './images/cloud.png';
 import image2 from './images/clouds.png'

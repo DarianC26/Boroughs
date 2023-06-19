@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const UserModel = require("./models/user.js");
+const CommunityModel = require("./models/communities.js");
+const PostModel = require("./models/communities.js");
 require('dotenv/config');
 
 const cors = require("cors");
