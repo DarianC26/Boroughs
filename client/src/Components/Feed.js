@@ -1,28 +1,37 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import './Feed.css';
-import Navbar from './Subcomponents/Navbar';
 
 export default function Feed() {
 
-    const [title, setTitle] = useState('');
+    const [title, setTitle] = useState('zion');
     const [description, setDescription] = useState('');
     const [date, setDate] = useState('may');
-    const [poster, setPoster] = useState('daniel');
+    const [poster, setPoster] = useState('dave');
     const [comm_name, setName] = useState('nba');
     const [category, setCategory] = useState('sports');
     const [postlist, setList] = useState([]);
+    
     var user;
 
     useEffect(() => {
       const logged = localStorage.getItem("user");
       if (logged) {
         user = logged;
+        axios.get("http://localhost:3001/createPost")
       }
       else {
         window.location.href = 'http://localhost:3000/login';
       }
     }, [])
+
+    function categoryVal(e) {
+      setDescription(e.target.value);
+    }
+
+    function descriptionVal(e) {
+      setCategory(e.target.value);
+    }
 
     function postToComm() {
       axios.post("http://localhost:3001/createPost", {
@@ -78,12 +87,13 @@ export default function Feed() {
                             </div>
                         </div>
                         <div className='textbox'>
-                            <input type='search' placeholder='Create Post'></input>
+                            <input type='text' placeholder='Create Post' onChange={descriptionVal}></input>
                         </div>
                     </div>
                     <div className='post-options'>
                         <div className='option-container'>
-                          
+                          <input type='text' placeholder='Category' onChange={categoryVal}></input>
+                          <button onClick={postToComm}> Register </button>
                         </div>
                     </div>
                 </div>

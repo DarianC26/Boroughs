@@ -62,8 +62,8 @@ app.post('/createPost', async (req, res) => {
     const community = await CommunityModel.findOne({ comm_name: req.body.comm_name });
     if (community) {
         community.posts.unshift(newPost);
+        await community.save();
     }
-    await community.save();
 
     res.json(newPost);
     console.log(newPost);
@@ -75,6 +75,14 @@ app.post('/createCommunity', async (req, res) => {
     await newCommunity.save();
 });
 
-app.post()
+app.get('/getFeed', async (req, res) => {
+    try {
+        const posts = await PostModel.find();
+        res.send(posts);
+    }
+    catch (error) {
+        res.status(400).json({ error });
+    }
+});
 
 app.listen(3001);

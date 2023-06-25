@@ -5,7 +5,6 @@ import Home from './Components/Home';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
 import Feed from './Components/Feed';
-import Navbar from './Components/Subcomponents/Navbar';
 
 function App() {
   return (
