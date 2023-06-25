@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import './Feed.css';
 import Navbar from './Subcomponents/Navbar';
@@ -12,6 +12,17 @@ export default function Feed() {
     const [comm_name, setName] = useState('nba');
     const [category, setCategory] = useState('sports');
     const [postlist, setList] = useState([]);
+    var user;
+
+    useEffect(() => {
+      const logged = localStorage.getItem("user");
+      if (logged) {
+        user = logged;
+      }
+      else {
+        window.location.href = 'http://localhost:3000/login';
+      }
+    }, [])
 
     function postToComm() {
       axios.post("http://localhost:3001/createPost", {
@@ -38,33 +49,46 @@ export default function Feed() {
 
   return (
     <div className='feed-container'>
-        <Navbar />
+        <nav>
+            <div className='nav-background-container'>
+                <div className='nav-container'>
+                  <p>boroughs</p>
+                  <div className='search-bar'>
+                      <i className='uil uil-search'></i>
+                      <input type='search' placeholder='Search Boroughs'></input>
+                  </div>
+
+                  <div className='s-button'>
+                      <a href='https://localhost:3000/profile'>Profile</a>
+                  </div>
+                </div>
+            </div>
+        </nav>
+
         <div className='feed-content'>
             <div className='side1'>
                 <div className='profile-corner'>
                 </div>
             </div>
             <div className='center'>
-                <div className='posts'>
-                    <div className='login_container'>
-                        <form className='login-form'>
-                            <label htmlFor='username'>Username</label>
-                            <input type="text" placeholder="Username" onChange={(event) => {
-                            setTitle(event.target.value);
-                            }}/>
-
-                            <label htmlFor='password'>Password</label>
-                            <input type="text" placeholder="Password" onChange={(event) => {
-                            setDescription(event.target.value);
-                            }}/>
-                        </form>
-                        <div>
-                            <button onClick={postToComm}> Create Post </button>
+                <div className='user-post'>
+                    <div className='post-text'>
+                        <div className='pfp'>
+                            <div className='pfp-circle'>
+                            </div>
                         </div>
-                        <div>
-                            <button onClick={createCommunity}> Create Community </button>
+                        <div className='textbox'>
+                            <input type='search' placeholder='Create Post'></input>
                         </div>
                     </div>
+                    <div className='post-options'>
+                        <div className='option-container'>
+                          
+                        </div>
+                    </div>
+                </div>
+                <div className='posts'>
+
                 </div>
             </div>
             <div className='side2'></div>

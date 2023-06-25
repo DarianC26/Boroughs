@@ -59,6 +59,12 @@ app.post('/createPost', async (req, res) => {
     const newPost = new PostModel(post);
     await newPost.save();
   
+    const community = await CommunityModel.findOne({ comm_name: req.body.comm_name });
+    if (community) {
+        community.posts.unshift(newPost);
+    }
+    await community.save();
+
     res.json(newPost);
     console.log(newPost);
 });
@@ -68,5 +74,7 @@ app.post('/createCommunity', async (req, res) => {
     const newCommunity = new CommunityModel(community);
     await newCommunity.save();
 });
+
+app.post()
 
 app.listen(3001);

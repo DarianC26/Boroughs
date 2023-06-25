@@ -23,10 +23,10 @@ export default function Home() {
   }, []);
 
   return (
-    <div className='container'>
-      <div className='home_wrapper'>
-        <nav className='nav_bar'>
-          <ul className='nav_links'>
+    <div className='home-container'>
+      <div className='home-wrapper'>
+        <nav className='nav-bar'>
+          <ul className='nav-links'>
                 <Link to="/login">
                     <li className='linker'>Login</li>
                 </Link>
@@ -35,13 +35,13 @@ export default function Home() {
                 </Link>
             </ul>
         </nav>
-        <div className='image_wrapper'></div>
+        <div className='image-wrapper'></div>
       </div>
       <div className='transitioning'>
         <img id='cloud' src={image1}></img>
         <img id='clouds' src={image2}></img>
       </div>
-      <div className='second_page'>
+      <div className='second-page'>
         <h1>hi</h1>
       </div>
     </div>
