@@ -77,7 +77,7 @@ app.post('/createCommunity', async (req, res) => {
 
 app.get('/getFeed', async (req, res) => {
     try {
-        const posts = await PostModel.find();
+        const posts = await PostModel.find().sort({ _id: -1 });
         res.send(posts);
     }
     catch (error) {
@@ -85,4 +85,13 @@ app.get('/getFeed', async (req, res) => {
     }
 });
 
+app.get('/getPost', async (req, res) => {
+    try {
+        const post = await PostModel.find(req._id);
+        res.send(post);
+    }
+    catch (error) {
+        res.status(400).json({ error });
+    }
+})
 app.listen(3001);

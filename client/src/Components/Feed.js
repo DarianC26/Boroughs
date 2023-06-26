@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import './Feed.css';
+import Post from './Subcomponents/Posts';
 
 export default function Feed() {
 
-    const [title, setTitle] = useState('zion');
+    const [title, setTitle] = useState('money23');
     const [description, setDescription] = useState('');
     const [date, setDate] = useState('may');
-    const [poster, setPoster] = useState('dave');
+    const [poster, setPoster] = useState('bob');
     const [comm_name, setName] = useState('nba');
     const [category, setCategory] = useState('sports');
     const [postlist, setList] = useState([]);
@@ -18,19 +19,22 @@ export default function Feed() {
       const logged = localStorage.getItem("user");
       if (logged) {
         user = logged;
-        axios.get("http://localhost:3001/createPost")
+        console.log(user);
+        axios.get("http://localhost:3001/getFeed").then((response) => {
+          setList(response.data);
+        });
       }
       else {
         window.location.href = 'http://localhost:3000/login';
       }
-    }, [])
+    }, []);
 
-    function categoryVal(e) {
-      setDescription(e.target.value);
+    function communityVal(e) {
+      setName(e.target.value);
     }
 
     function descriptionVal(e) {
-      setCategory(e.target.value);
+      setDescription(e.target.value);
     }
 
     function postToComm() {
@@ -41,8 +45,6 @@ export default function Feed() {
         date,
         comm_name,
         category
-    }).then((response) => {
-      console.log(response);
     });
   }
 
@@ -51,8 +53,6 @@ export default function Feed() {
       comm_name,
       category,
       postlist
-  }).then((response) => {
-    console.log(response);
   });
 }
 
@@ -80,6 +80,7 @@ export default function Feed() {
                 </div>
             </div>
             <div className='center'>
+
                 <div className='user-post'>
                     <div className='post-text'>
                         <div className='pfp'>
@@ -90,18 +91,26 @@ export default function Feed() {
                             <input type='text' placeholder='Create Post' onChange={descriptionVal}></input>
                         </div>
                     </div>
+
                     <div className='post-options'>
                         <div className='option-container'>
-                          <input type='text' placeholder='Category' onChange={categoryVal}></input>
+                          <input type='text' placeholder='Category' onChange={communityVal}></input>
                           <button onClick={postToComm}> Register </button>
                         </div>
                     </div>
-                </div>
-                <div className='posts'>
 
                 </div>
+                <div className='posts'>
+                    {postlist.map((post) => {
+                        return <Post key={post._id} post={post} />;
+                    })}
+                </div>
             </div>
-            <div className='side2'></div>
+            <div className='side2'>
+            </div>
+        </div>
+        <div className='footer-space'>
+          
         </div>
     </div>
   )

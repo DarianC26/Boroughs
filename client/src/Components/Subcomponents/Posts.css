@@ -1,0 +1,11 @@
+.indiv-post {
+    height: 20vh;
+    width: 100%;
+    background-color: white;
+}
+
+.post-content {
+    height: 100%;
+    width: 100%;
+    margin-top: 5vh;
+}

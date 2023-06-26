@@ -1,8 +1,16 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Posts.css';
 
 function Posts({post}) {
   return (
-    <div>Posts</div>
+    <Link to={`/post/${post._id}`}>
+        <div className='indiv-post'>
+            <div className='post-content'>
+                {post.description}
+            </div>
+        </div>
+    </Link>
   )
 }
 
