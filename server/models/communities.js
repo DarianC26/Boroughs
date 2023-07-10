@@ -1,11 +1,7 @@
 const mongoose = require("mongoose");
 
 const CommunitySchema = new mongoose.Schema({
-  comm_name: {
-    type: String,
-    required: true,
-  },
-  category: {
+  comm_create: {
     type: String,
     required: true,
   },

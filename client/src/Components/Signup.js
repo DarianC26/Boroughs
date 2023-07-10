@@ -6,7 +6,8 @@ export default function Signup() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [fullname, setName] = useState('');
+    const [firstName, setFirst] = useState('');
+    const [lastName, setLast] = useState('');
     const [age, setAge] = useState(0);
     const [email, setEmail] = useState('');
 
@@ -14,11 +15,19 @@ export default function Signup() {
 
     function createUser() {
         axios.post("http://localhost:3001/createUser", {
-            fullname,
+            firstName,
+            lastName,
             age,
             username,
             password,
             email
+    }).then((response) => {
+      localStorage.setItem("user", JSON.stringify(response.data));
+      window.location.reload();
+      window.location.href = 'http://localhost:3000/login';
+    }).catch((response) => {
+      console.log(response.response.status);
+      alert("This username or email is already in use");
     });
     }
 
@@ -40,9 +49,14 @@ export default function Signup() {
             setAge(event.target.value);
             }}/>
 
-            <label htmlFor='fullname'>Fullname</label>
-            <input type="text" placeholder="Fullname" onChange={(event) => {
-            setName(event.target.value);
+            <label htmlFor='firstName'>First Name</label>
+            <input type="text" placeholder="First Name" onChange={(event) => {
+            setFirst(event.target.value);
+            }}/>
+
+            <label htmlFor='lastName'>Last Name</label>
+            <input type="text" placeholder="Last Name" onChange={(event) => {
+            setLast(event.target.value);
             }}/>
 
             <label htmlFor='email'>Email</label>

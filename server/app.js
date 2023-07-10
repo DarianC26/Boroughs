@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const UserModel = require("./models/user.js");
 const CommunityModel = require("./models/communities.js");
 const PostModel = require("./models/posts.js");
+const FriendsModel = require("./models/friends.js");
+
 require('dotenv/config');
 
 const cors = require("cors");
@@ -47,32 +49,50 @@ app.post('/loginUser', async (req, res) => {
 
 app.post('/createUser', async (req, res) => {
     const user = req.body;
-    const newUser = new UserModel(user);
-    await newUser.save();
-  
-    res.json(user);
+
+    try {
+        const dupUser = await UserModel.findOne({ username: req.body.username });
+        const dupEmail = await UserModel.findOne({ email: req.body.email });
+        if ((dupUser != null) || (dupEmail != null)) {
+            console.log("send a bad");
+            res.status(400).send("This email or username is already in use");
+        }
+        else {
+            console.log("send a good");
+            const newUser = new UserModel(user);
+            await newUser.save();
+            res.send(newUser);
+        }
+    }
+    catch (error) {
+        res.status(400).json({ error });
+    }
+
     console.log(user);
 });
 
 app.post('/createPost', async (req, res) => {
-    const post = req.body;
+    let post = req.body;
+    post.date = new Date();
     const newPost = new PostModel(post);
     await newPost.save();
   
-    const community = await CommunityModel.findOne({ comm_name: req.body.comm_name });
+    const community = await CommunityModel.findOne({ comm_create: req.body.comm_name });
     if (community) {
+        console.log('hi');
         community.posts.unshift(newPost);
         await community.save();
     }
 
     res.json(newPost);
-    console.log(newPost);
 });
 
 app.post('/createCommunity', async (req, res) => {
     const community = req.body;
     const newCommunity = new CommunityModel(community);
     await newCommunity.save();
+    
+    res.send(newCommunity);
 });
 
 app.get('/getFeed', async (req, res) => {
@@ -85,13 +105,28 @@ app.get('/getFeed', async (req, res) => {
     }
 });
 
-app.get('/getPost', async (req, res) => {
+app.get('/getPost/:id', async (req, res) => {
     try {
-        const post = await PostModel.find(req._id);
+        const postId = req.params.id;
+        const post = await PostModel.findById(postId);
         res.send(post);
     }
     catch (error) {
         res.status(400).json({ error });
     }
+});
+
+app.get('/getCommunities', async (req, res) => {
+    try {
+        const communities = await CommunityModel.find();
+        res.send(communities);
+    }
+    catch (error) {
+        res.status(400).json({ error });
+    }
+})
+
+app.post('/addFriend/:username', async (req, res) => {
+    
 })
 app.listen(3001);

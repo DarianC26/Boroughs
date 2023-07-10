@@ -35,7 +35,10 @@ export default function Home() {
                 </Link>
             </ul>
         </nav>
-        <div className='image-wrapper'></div>
+        <div className='image-wrapper'>
+          <div className='background-image'>
+          </div>
+        </div>
       </div>
       <div className='transitioning'>
         <img id='cloud' src={image1}></img>
