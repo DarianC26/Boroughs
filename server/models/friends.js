@@ -6,7 +6,7 @@ const FriendsSchema = new mongoose.Schema({
     required: true,
   },
   friends: [{
-    fStatus : Number, //0 pending, 1 following, 2 friends
+    fStatus : Number, //0 pending, 1 following, 2 friends (Note: Maybe use enums?)
     username : String
     }]
     ,

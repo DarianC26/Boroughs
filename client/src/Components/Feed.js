@@ -41,21 +41,20 @@ export default function Feed() {
         }
       });
     }, []);
-
+    // functions to track inputs of community and post desc
     function communityDrop(e) {
       setName(e.target.value);
-      console.log(comm_name)
     }
 
     function communityPost(e) {
       setNewComm(e.target.value);
-      console.log(comm_name)
     }
 
     function descriptionVal(e) {
       setDescription(e.target.value);
     }
 
+    // posts to the database and refreshes the page
     function postToComm() {
       axios.post("http://localhost:3001/createPost", {
         title,
@@ -77,7 +76,8 @@ export default function Feed() {
     var selectElement = document.getElementById('communityDrop');
     selectElement.add(new Option(response.data.comm_create));
   });
-}
+  }
+
 
   return (
     <div className='feed-container'>

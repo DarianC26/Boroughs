@@ -8,6 +8,9 @@ const CommunitySchema = new mongoose.Schema({
   posts: {
     type: Array,
     required: true
+  },
+  comm_lower: {
+    type: String
   }
 });
 

@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Posts.css';
+import axios from 'axios';
 
 function Posts({post}) {
 
-  useEffect(() => {
+  const logged = localStorage.getItem("user");
 
-  });
+  /*
+  */
 
   return (
     <div className='indiv-post-container'>
-      <Link to={`/post/${post._id}`}>
+      <Link className='detail-link' to={`/post/${post._id}`}>
           <div className='indiv-post'>
               <div className='post-content'>
                   {post.description}

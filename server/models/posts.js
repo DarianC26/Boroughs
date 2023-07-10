@@ -1,5 +1,3 @@
-
-
 const mongoose = require("mongoose");
 
 const PostSchema = new mongoose.Schema({
@@ -22,6 +20,10 @@ const PostSchema = new mongoose.Schema({
     comm_name: {
         type: String,
         required: true,
+    },
+    comments: {
+        type: Array,
+        default: []
     }
 });
 

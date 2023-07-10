@@ -15,6 +15,8 @@ export default function Login() {
       localStorage.setItem("user", JSON.stringify(response.data));
       window.location.reload();
       window.location.href = 'http://localhost:3000/feed';
+    }).catch((response) => {
+      console.log(response);
     });
   }
 

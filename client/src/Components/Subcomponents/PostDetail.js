@@ -6,6 +6,7 @@ export default function PostDetail() {
 
     const { postId } = useParams()
     const [post, setPost] = useState('')
+    const logged = localStorage.getItem("user");
 
     useEffect(() => {
         axios.get(`http://localhost:3001/getPost/${postId}`).then((response) => {
@@ -13,8 +14,27 @@ export default function PostDetail() {
         })
     }, []);
 
+    useEffect(() => {
+        var buttonEl = document.createElement("button");
+        buttonEl.onclick = deletePost;
+        var buttonTextEl = document.createElement("span");
+        buttonTextEl.className = "del-button";
+        buttonTextEl.innerText = "Delete Post";
+        buttonEl.appendChild(buttonTextEl);
+        if (JSON.parse(logged)._id === post.poster) {
+          document.getElementById("test").appendChild(buttonEl);
+        }
+      })
+
+    function deletePost() {
+        axios.delete(`http://localhost:3001/deletePost/${post._id}`).then((response) => {
+          console.log(response);
+          window.location.href = 'http://localhost:3000/feed';
+        });
+      }
+
     return (
-        <div className='id'>
+        <div id='test' className='id'>
             {post.description}
         </div>
     );

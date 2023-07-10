@@ -2,10 +2,21 @@
     height: 20vh;
     width: 100%;
     background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.detail-link {
+    width: 80%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .post-content {
     height: 100%;
     width: 100%;
-    margin-top: 5vh;
 }

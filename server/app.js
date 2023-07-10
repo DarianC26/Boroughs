@@ -17,48 +17,23 @@ mongoose.connect(process.env.DB_CONNECTION)
     .then(() => console.log('Connected Successfully'))
     .catch(() => console.log('Connected Unsuccessfully'));
 
-app.get('/', (req, res) => {
-    res.send('We are on home');
-});
+// The application's CRUD operations
 
-app.get('/sample/:id', (req, res) => {
-    var id = req.params.id;
-    res.send(id);
-});
+// Create operations
 
-app.post('/loginUser', async (req, res) => {
-    try {
-        const user = await UserModel.findOne({ username: req.body.username });
-        if (user) {
-            const result = req.body.password === user.password;
-            if (result) {
-                res.send(user);
-            }
-            else {
-                res.status(400).json({ error: "password doesn't match" });
-            }
-        }
-        else {
-            res.status(400).json({ error: "User doesn't exist" });
-        }
-    }
-    catch (error) {
-        res.status(400).json({ error });
-    }
-});
-
+// Creates the user by taking in a username and email, fails if username and email is in use already
 app.post('/createUser', async (req, res) => {
     const user = req.body;
-
     try {
         const dupUser = await UserModel.findOne({ username: req.body.username });
         const dupEmail = await UserModel.findOne({ email: req.body.email });
-        if ((dupUser != null) || (dupEmail != null)) {
-            console.log("send a bad");
-            res.status(400).send("This email or username is already in use");
+        if ((dupUser != null)) {
+            res.status(400).json({ error: "This Username is already in use" });
+        }
+        else if (dupEmail != null) {
+            res.status(400).json({ error: "This Email is already in use" });
         }
         else {
-            console.log("send a good");
             const newUser = new UserModel(user);
             await newUser.save();
             res.send(newUser);
@@ -67,10 +42,9 @@ app.post('/createUser', async (req, res) => {
     catch (error) {
         res.status(400).json({ error });
     }
-
-    console.log(user);
 });
 
+// Creates a post and assigns to the appropriate community in seperate collection
 app.post('/createPost', async (req, res) => {
     let post = req.body;
     post.date = new Date();
@@ -79,7 +53,6 @@ app.post('/createPost', async (req, res) => {
   
     const community = await CommunityModel.findOne({ comm_create: req.body.comm_name });
     if (community) {
-        console.log('hi');
         community.posts.unshift(newPost);
         await community.save();
     }
@@ -87,14 +60,28 @@ app.post('/createPost', async (req, res) => {
     res.json(newPost);
 });
 
+// Creates a community, and sends an error if community name is already in use
 app.post('/createCommunity', async (req, res) => {
     const community = req.body;
-    const newCommunity = new CommunityModel(community);
-    await newCommunity.save();
-    
-    res.send(newCommunity);
+    community.comm_lower = community.comm_create.toLowerCase();
+
+    try {
+        const dupComm = await CommunityModel.findOne( {comm_lower: community.comm_lower });
+        if (dupComm) {
+            res.status(400).json({ error: "Community name in use" });
+        }
+        const newCommunity = new CommunityModel(community);
+        await newCommunity.save();
+        res.send(newCommunity);
+    }
+    catch (error) {
+        res.status(400).json({ error });
+    }
 });
 
+// R operations
+
+// Returns the feed by getting the newests posts from all users
 app.get('/getFeed', async (req, res) => {
     try {
         const posts = await PostModel.find().sort({ _id: -1 });
@@ -105,6 +92,7 @@ app.get('/getFeed', async (req, res) => {
     }
 });
 
+// Returns an individual post's data
 app.get('/getPost/:id', async (req, res) => {
     try {
         const postId = req.params.id;
@@ -116,6 +104,7 @@ app.get('/getPost/:id', async (req, res) => {
     }
 });
 
+// Returns the list of existing communities
 app.get('/getCommunities', async (req, res) => {
     try {
         const communities = await CommunityModel.find();
@@ -125,6 +114,44 @@ app.get('/getCommunities', async (req, res) => {
         res.status(400).json({ error });
     }
 })
+
+// U operations
+
+// D operations
+
+app.delete('/deletePost/:id', async (req, res) => {
+    try {
+        const postId = req.params.id;
+        await PostModel.deleteOne( {_id: postId} );
+        const posts = await PostModel.find().sort({ _id: -1 });
+        res.send(posts);
+    }
+    catch (error) {
+        res.status(400).json({ error });
+    }
+})
+
+// Logs the user in, checks for an existing username and checks for the accompanying password
+app.post('/loginUser', async (req, res) => {
+    try {
+        const user = await UserModel.findOne({ username: req.body.username });
+        if (user) {
+            const result = req.body.password === user.password;
+            if (result) {
+                res.send(user);
+            }
+            else {
+                res.status(400).json({ error: "Password doesn't match" });
+            }
+        }
+        else {
+            res.status(400).json({ error: "User doesn't exist" });
+        }
+    }
+    catch (error) {
+        res.status(400).json({ error });
+    }
+});
 
 app.post('/addFriend/:username', async (req, res) => {
     
