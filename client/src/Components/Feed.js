@@ -8,7 +8,7 @@ export default function Feed() {
 
     const [comm_create, setNewComm] = useState('');
     const [postlist, setList] = useState([]);
-    const [total, setTotal] = useState(5);
+    const total = useRef(5);
     const count = useRef(0.75);
     
     var user;
@@ -17,7 +17,7 @@ export default function Feed() {
       const logged = localStorage.getItem("user");
       if (logged) {
         user = logged;
-        axios.get('http://localhost:3001/getFeed', {params: {total: total}}).then((response) => {
+        axios.get('http://localhost:3001/getFeed', {params: {total: total.current}}).then((response) => {
           setList(response.data);
         });
       }
@@ -32,15 +32,15 @@ export default function Feed() {
 
       scrollable.addEventListener("scroll", e => {
         if(scrollable.scrollTop > (scrollH * count.current)) {
-          axios.get('http://localhost:3001/getFeed', {params: {total: total+5}}).then((response) => {
+          axios.get('http://localhost:3001/getFeed', {params: {total: total.current+5}}).then((response) => {
             setList(response.data);
+            total.current = (total.current+5);
           });
-          setTotal(total+5);
           count.current = count.current + 1;
-          console.log(count.current);
+          console.log(count.current, total.current);
         }
       })
-    }, [total])
+    }, [count.current])
 
     function communityPost(e) {
       setNewComm(e.target.value);
@@ -104,7 +104,6 @@ export default function Feed() {
             </div>
         </div>
         <div className='footer-space'>
-          
         </div>
     </div>
   )

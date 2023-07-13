@@ -23,14 +23,19 @@ export default function Navbar() {
     <nav>
         <div className='nav-background-container'>
             <div className='nav-container'>
-            <Link className='logo-link' to='/'>boroughs</Link>
-            <div className='search-bar'>
-                <input type='search' placeholder='Search Boroughs' value={input} onInput={(e) => handleChange(e.target.value)}></input>
-            </div>
 
-            <div className='s-button'>
-                <Link className='profile-link' to='/profile'>Profile</Link>
-            </div>
+                <div className='logo-div'>
+                    <Link className='logo-link' to='/'>boroughs</Link>
+                </div>
+
+                <div className='search-bar'>
+                    <input type='search' placeholder='Search Boroughs' value={input} onInput={(e) => handleChange(e.target.value)}></input>
+                </div>
+
+                <div className='s-button'>
+                    <Link className='profile-link' to='/profile'>Profile</Link>
+                </div>
+
             </div>
         </div>
     </nav>
