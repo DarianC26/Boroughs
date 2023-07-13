@@ -136,7 +136,21 @@ app.get('/getCommunity', async (req, res) => {
 app.delete('/deletePost/:id', async (req, res) => {
     try {
         const postId = req.params.id;
+        let del = await PostModel.findById(postId);
         await PostModel.deleteOne( {_id: postId} );
+
+        const community = await CommunityModel.findOne({ comm_lower: del.comm_name.toLowerCase() });
+        if (community) {
+            let obj = community.posts.find((o, i) => {
+                if (o._id.toString() === del._id.toString()) {
+                    community.posts.splice(i, 1);
+                    return true; // stop searching
+                }
+            });
+            console.log(community.posts)
+            await community.save();
+        }
+
         const posts = await PostModel.find().sort({ _id: -1 });
         res.send(posts);
     }
