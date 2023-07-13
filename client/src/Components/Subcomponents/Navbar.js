@@ -1,15 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios';
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 
 export default function Navbar() {
-  return (
+
+    const [input, setInput] = useState('');
+
+    function getData(e) {
+        axios.get('http://localhost:3001/getUsers', {params: {search: e}}).then((response) => {
+            let results = response;
+            console.log(results);
+        })
+    }
+
+    function handleChange(e) {
+        setInput(e);
+        getData(e)
+    }
+
+    return (
     <nav>
         <div className='nav-background-container'>
             <div className='nav-container'>
             <Link className='logo-link' to='/'>boroughs</Link>
             <div className='search-bar'>
-                <input type='search' placeholder='Search Boroughs'></input>
+                <input type='search' placeholder='Search Boroughs' value={input} onInput={(e) => handleChange(e.target.value)}></input>
             </div>
 
             <div className='s-button'>
@@ -18,5 +34,5 @@ export default function Navbar() {
             </div>
         </div>
     </nav>
-  )
+    )
 }

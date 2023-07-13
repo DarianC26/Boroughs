@@ -48,18 +48,18 @@ app.post('/createUser', async (req, res) => {
 app.post('/createPost', async (req, res) => {
     let post = req.body;
     post.date = new Date();
-    const newPost = new PostModel(post);
-    await newPost.save();
 
     postLower = post.comm_name.toLowerCase();
   
     const community = await CommunityModel.findOne({ comm_lower: postLower });
     if (community) {
+        post.comm_name = community.comm_create;
+        const newPost = new PostModel(post);
         community.posts.unshift(newPost._id);
         await community.save();
+        await newPost.save();
+        res.json(newPost);
     }
-
-    res.json(newPost);
 });
 
 // Creates a community, and sends an error if community name is already in use
@@ -126,6 +126,13 @@ app.get('/getCommunity', async (req, res) => {
     catch (error) {
         res.status(400).json({ error });
     }
+})
+
+// Returns user/s depending on input(letters)
+app.get('/getUsers', async (req, res) => {
+    searchparam = req.query.search;
+    const test = await UserModel.find({username: {$regex: '^' + searchparam, $options: 'i'}});
+    res.send(test);
 })
 
 // U operations

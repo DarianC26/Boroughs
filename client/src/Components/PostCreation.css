@@ -53,3 +53,10 @@
 .description-body-section > button {
     display: block;
 }
+
+.post-creation-footer {
+    height: 5vh;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}

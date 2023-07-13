@@ -67,6 +67,9 @@ export default function PostCreation() {
                 </div>
             </div>
         </div>
+        <div className='post-creation-footer'>
+            <button onClick={() => {navigate('/feed')}}>Previous Page</button>
+        </div>
     </div>
     )
 }

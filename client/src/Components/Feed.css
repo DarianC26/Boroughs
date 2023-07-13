@@ -1,5 +1,5 @@
 .feed-container {
-    min-height: 100vh;
+    height: 100vh;
     width: 100vw;
     background-color: #F3F2EF;
 }
@@ -20,9 +20,7 @@
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-rows: 20vh auto;
-    display: flex;
-    flex-direction: column;
+    grid-template-rows: 15vh 70vh;
 }
 
 .user-post {
@@ -30,6 +28,7 @@
     width: 100%;
     border-radius: 10px;
     background-color: white;
+    border: 1px solid rgb(213, 213, 213)
 }
 
 .post-text {
@@ -75,14 +74,20 @@
 }
 
 .posts {
-    flex-grow: 1;
     width: 100%;
+    overflow-y: scroll;
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.posts::-webkit-scrollbar {
+    display: none;
 }
 
 .footer-space {
     height: 10px;
     width: 100%;
-    background-color:#F1F2F4;
+    background-color:#F3F2EF;
 }
 
 .side1 {

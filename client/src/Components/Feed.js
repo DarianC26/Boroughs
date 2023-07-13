@@ -49,6 +49,7 @@ export default function Feed() {
         <div className='feed-content'>
             <div className='side1'>
                 <div className='profile-corner'>
+                  hi
                 </div>
             </div>
             <div className='center'>
