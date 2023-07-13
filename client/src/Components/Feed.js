@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import axios from 'axios';
 import './Feed.css';
 import Post from './Subcomponents/Posts';
@@ -8,6 +8,8 @@ export default function Feed() {
 
     const [comm_create, setNewComm] = useState('');
     const [postlist, setList] = useState([]);
+    const [total, setTotal] = useState(5);
+    const count = useRef(0.75);
     
     var user;
 
@@ -15,7 +17,7 @@ export default function Feed() {
       const logged = localStorage.getItem("user");
       if (logged) {
         user = logged;
-        axios.get("http://localhost:3001/getFeed").then((response) => {
+        axios.get('http://localhost:3001/getFeed', {params: {total: total}}).then((response) => {
           setList(response.data);
         });
       }
@@ -23,6 +25,22 @@ export default function Feed() {
         window.location.href = 'http://localhost:3000/login';
       }
     }, []);
+
+    useEffect(() => {
+      const scrollable = document.querySelector('.posts')
+      let scrollH = scrollable.scrollHeight;
+
+      scrollable.addEventListener("scroll", e => {
+        if(scrollable.scrollTop > (scrollH * count.current)) {
+          axios.get('http://localhost:3001/getFeed', {params: {total: total+5}}).then((response) => {
+            setList(response.data);
+          });
+          setTotal(total+5);
+          count.current = count.current + 1;
+          console.log(count.current);
+        }
+      })
+    }, [total])
 
     function communityPost(e) {
       setNewComm(e.target.value);

@@ -86,7 +86,8 @@ app.post('/createCommunity', async (req, res) => {
 // Returns the feed by getting the newests posts from all users
 app.get('/getFeed', async (req, res) => {
     try {
-        const posts = await PostModel.find().sort({ _id: -1 });
+        let limit = req.query.total;
+        const posts = await PostModel.find().limit(limit).sort({ _id: -1 });
         res.send(posts);
     }
     catch (error) {
