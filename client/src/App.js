@@ -8,6 +8,7 @@ import Login from './Components/Login';
 import Signup from './Components/Signup';
 import Feed from './Components/Feed';
 import Post from './Components/Subcomponents/PostDetail'
+import PostCreation from './Components/PostCreation';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/feed' element={<Feed />}></Route>
           <Route path='/post/:postId' element={<Post />}></Route>
+          <Route path='/createPost' element={<PostCreation />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

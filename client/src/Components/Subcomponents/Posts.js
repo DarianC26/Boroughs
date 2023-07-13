@@ -7,9 +7,6 @@ function Posts({post}) {
 
   const logged = localStorage.getItem("user");
 
-  /*
-  */
-
   return (
     <div className='indiv-post-container'>
       <Link className='detail-link' to={`/post/${post._id}`}>

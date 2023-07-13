@@ -19,7 +19,7 @@ mongoose.connect(process.env.DB_CONNECTION)
 
 // The application's CRUD operations
 
-// Create operations
+// C operations
 
 // Creates the user by taking in a username and email, fails if username and email is in use already
 app.post('/createUser', async (req, res) => {
@@ -50,10 +50,12 @@ app.post('/createPost', async (req, res) => {
     post.date = new Date();
     const newPost = new PostModel(post);
     await newPost.save();
+
+    postLower = post.comm_name.toLowerCase();
   
-    const community = await CommunityModel.findOne({ comm_create: req.body.comm_name });
+    const community = await CommunityModel.findOne({ comm_lower: postLower });
     if (community) {
-        community.posts.unshift(newPost);
+        community.posts.unshift(newPost._id);
         await community.save();
     }
 
@@ -115,10 +117,22 @@ app.get('/getCommunities', async (req, res) => {
     }
 })
 
+// Returns a community
+app.get('/getCommunity', async (req, res) => {
+    try {
+        const community = await CommunityModel.findOne( {comm_lower: req.body.comm_lower});
+        res.send(community);
+    }
+    catch (error) {
+        res.status(400).json({ error });
+    }
+})
+
 // U operations
 
 // D operations
 
+// Deletes a user's post
 app.delete('/deletePost/:id', async (req, res) => {
     try {
         const postId = req.params.id;

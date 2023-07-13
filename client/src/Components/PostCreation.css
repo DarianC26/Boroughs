@@ -1,0 +1,55 @@
+.post-creation-container {
+    max-height: 100vh;
+    width: 100vw;
+}
+
+.create-page-container {
+    margin-top: 5vh;
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-post-grid {
+    height: 100%;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    border:1px solid black;
+}
+
+.post-content-body {
+    height: 100%;
+    width: 100%;
+    border:1px solid black;
+}
+
+.posting-rules {
+    height: 100%;
+    width: 100%;
+    border:1px solid black;
+}
+
+.description-input-tag {
+    height: 70%;
+    width: 80%;
+}
+
+.title-community {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.description-body-section {
+    height: 80%;
+    width: 100%;
+}
+
+.description-body-section > button {
+    display: block;
+}

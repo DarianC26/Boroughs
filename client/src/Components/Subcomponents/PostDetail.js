@@ -21,10 +21,10 @@ export default function PostDetail() {
         buttonTextEl.className = "del-button";
         buttonTextEl.innerText = "Delete Post";
         buttonEl.appendChild(buttonTextEl);
-        if (JSON.parse(logged)._id === post.poster) {
+        if (JSON.parse(logged).username === post.poster) {
           document.getElementById("test").appendChild(buttonEl);
         }
-      })
+      }, [post]);
 
     function deletePost() {
         axios.delete(`http://localhost:3001/deletePost/${post._id}`).then((response) => {
@@ -35,7 +35,14 @@ export default function PostDetail() {
 
     return (
         <div id='test' className='id'>
+            {post.title}
+            <br></br>
             {post.description}
+            <br></br>
+            {post.poster}
+            <br></br>
+            {post.date}
+            <br></br>
         </div>
     );
 }

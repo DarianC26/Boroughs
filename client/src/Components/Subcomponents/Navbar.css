@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'Klavika';
+    src: url('../Assets/klavika-bold.otf') format("opentype");
+}
+
+nav {
+    position: sticky;
+    top: 0;
+}
+
+.nav-background-container {
+    height: 7.5vh;
+    width: 100vw;
+    background-color: white;
+    border-bottom: 1px solid rgb(213, 213, 213);
+}
+
+.nav-container {
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.logo-link {
+    text-decoration: none;
+    font-size: 35px;
+    font-family: Klavika;
+}
+
+.search-bar > input {
+    width: 40vw;
+    height: 45px;
+    border-radius: 50px;
+    border: 1px solid rgb(212, 212, 212);
+    background-color: rgb(242, 242, 242);
+}
+
+.profile-link {
+    text-decoration: none;
+    font-size: 25px;
+    font-family: Klavika;
+}
