@@ -7,6 +7,11 @@
     align-items: center;
     margin-top: 5vh;
     border: 1px solid rgb(213, 213, 213);
+    padding: 10px;
+}
+
+.indiv-post-container:hover {
+    background-color: rgb(241, 241, 241);
 }
 
 .detail-link {

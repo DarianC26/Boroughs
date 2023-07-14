@@ -1,5 +1,5 @@
 .background-color-container {
-    background-color: #404EEC;
+    background-color: #aab1f4;
 }
 
 .feed-container {
@@ -34,7 +34,7 @@
 .user-post {
     height: 15vh;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: white;
     border: 1px solid rgb(213, 213, 213)
 }
@@ -99,7 +99,7 @@
 }
 
 .side1 {
-    width: 100%;
+    width: 27.5vw;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -107,35 +107,55 @@
 
 .profile-corner {
     height: 50vh;
-    width: 80%;
+    width: 20vw;
     background-color: white;
     border-radius: 10px;
-    position: sticky;
-    top: 10vh;
+    position: fixed;
+
 }
 
 .side2 {
-    width: 100%;
+    width: 30vw;
     height: 100%;
     display: flex;
     justify-content: center;
 }
 
 .community-tab {
-    height: 80vh;
-    width: 80%;
+    height: 60vh;
+    width: 22.5vw;
     background-color: white;
     border-radius: 10px;
-    position: sticky;
-    top: 10vh;
+    position: fixed;
+    
 }
 
 .create-comm {
     text-align: center;
 }
 
-.create-comm > h1 {}
-
 input[type=search]{
     padding-left: 20px;
+}
+
+.place-at-bottom {
+    height: 30vh;
+    width: 30vw;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    z-index: 1;
+    padding: 0px;
+    margin: 0px;
+}
+
+.place-at-left-bottom {
+    height: 30vh;
+    width: 27.5vw;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1;
+    padding: 0px;
+    margin: 0px;
 }

@@ -11,8 +11,13 @@ nav {
 .nav-background-container {
     min-height: 7.5vh;
     width: 100vw;
-    background-color: rgb(103, 128, 255);
-    border-bottom: 1px solid rgb(71, 102, 255);
+    background-color: rgb(245, 245, 245);
+    border-bottom: 1px solid rgb(236, 236, 236);
+}
+
+.logo-svg {
+    height: 50px;
+    width: 50px;
 }
 
 .nav-container {
@@ -21,7 +26,7 @@ nav {
     width: 100%;
     display: grid;
     grid-template-columns: 27.5vw 42.5vw 30vw;
-    background-color: rgb(103, 128, 255);
+    background-color: rgb(245, 245, 245);
 }
 
 .logo-div {
@@ -32,10 +37,9 @@ nav {
 
 .logo-link {
     text-decoration: none;
-    font-size: 45px;
+    font-size: 35px;
     font-family: Klavika;
-    color: white;
-    -webkit-text-stroke: 1px #e2e2e2;
+    color: #404EEC;
 }
 
 .search-bar {
@@ -60,8 +64,7 @@ nav {
 
 .profile-link {
     text-decoration: none;
-    font-size: 35px;
+    font-size: 5px;
     font-family: Klavika;
-    color: white;
-    -webkit-text-stroke: 1px #e2e2e2;
+    color: #404EEC;
 }

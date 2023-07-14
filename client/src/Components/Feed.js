@@ -3,6 +3,8 @@ import axios from 'axios';
 import './Feed.css';
 import Post from './Subcomponents/Posts';
 import Navbar from './Subcomponents/Navbar';
+import image1 from './images/viewersbackground.svg';
+import image2 from './images/boardgames.svg';
 
 export default function Feed() {
 
@@ -77,6 +79,7 @@ export default function Feed() {
                   <h1>Profile</h1>
                   <h2>{user.username}</h2>
                 </div>
+                <img className='place-at-left-bottom' src={image2}></img>
             </div>
             <div className='center'>
 
@@ -109,6 +112,7 @@ export default function Feed() {
                   </div>
                 </div>
               </div>
+              <img className='place-at-bottom' src={image1}></img>
             </div>
         </div>
         <div className='footer-space'>
