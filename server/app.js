@@ -155,7 +155,6 @@ app.delete('/deletePost/:id', async (req, res) => {
                     return true; // stop searching
                 }
             });
-            console.log(community.posts)
             await community.save();
         }
 

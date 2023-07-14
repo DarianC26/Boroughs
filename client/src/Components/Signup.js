@@ -32,41 +32,77 @@ export default function Signup() {
     }
 
   return (
-    <div className='register-container'>
-        <form className='register-form'>
-            <label htmlFor='username'>Username</label>
-            <input type="text" placeholder="Username" onChange={(event) => {
-            setUsername(event.target.value);
+    <div id='signupauth' className="Auth-form-container">
+      <div className="Auth-form">
+        <div className="Auth-form-content">
+          <h3 className="Auth-form-title">Sign Up</h3>
+          <div className="form-group mt-3">
+            <label>First Name</label>
+            <input
+              type="firstname"
+              id='input1'
+              className="form-control mt-1"
+              placeholder="Enter First Name"
+              onChange={(event) => {
+                setFirst(event.target.value);
             }}/>
+          </div>
 
-            <label htmlFor='password'>Password</label>
-            <input type="text" placeholder="Password" onChange={(event) => {
-            setPassword(event.target.value);
+          <div className="form-group mt-3">
+            <label>Last Name</label>
+            <input
+              type="lastname"
+              id='input1'
+              className="form-control mt-1"
+              placeholder="Enter Last Name"
+              onChange={(event) => {
+                setLast(event.target.value);
             }}/>
+          </div>
 
-            <label htmlFor='age'>Age</label>
-            <input type="number" placeholder="Age" onChange={(event) => {
-            setAge(event.target.value);
+          <div className="form-group mt-3">
+            <label>Email</label>
+            <input
+              type="email"
+              id='input1'
+              className="form-control mt-1"
+              placeholder="Enter Email"
+              onChange={(event) => {
+                setEmail(event.target.value);
             }}/>
+          </div>
 
-            <label htmlFor='firstName'>First Name</label>
-            <input type="text" placeholder="First Name" onChange={(event) => {
-            setFirst(event.target.value);
+          <div className="form-group mt-3">
+            <label>Username</label>
+            <input
+              type="username"
+              id='input1'
+              className="form-control mt-1"
+              placeholder="Enter Username"
+              onChange={(event) => {
+                setUsername(event.target.value);
             }}/>
-
-            <label htmlFor='lastName'>Last Name</label>
-            <input type="text" placeholder="Last Name" onChange={(event) => {
-            setLast(event.target.value);
+          </div>
+          <div className="form-group mt-3">
+            <label>Password</label>
+            <input
+              type="password"
+              className="form-control mt-1"
+              placeholder="Enter Password"
+              onChange={(event) => {
+                setPassword(event.target.value);
             }}/>
-
-            <label htmlFor='email'>Email</label>
-            <input type="text" placeholder="Email" onChange={(event) => {
-            setEmail(event.target.value);
-            }}/>
-        </form>
-        <div>
-          <button onClick={createUser}> Register </button>
+          </div>
+          <div className="d-grid gap-2 mt-3">
+            <button className="btn btn-primary" onClick={createUser}>
+              Register
+            </button>
+          </div>
+          <p className="forgot-password text-right mt-2">
+            <br></br>
+          </p>
         </div>
+      </div>
     </div>
   )
 }

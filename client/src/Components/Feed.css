@@ -1,7 +1,15 @@
+.background-color-container {
+    background-color: #404EEC;
+}
+
 .feed-container {
     min-height: 100vh;
     width: 100vw;
-    background-color: #F3F2EF;
+    background: url(images/image.svg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .navbar-import {
@@ -85,10 +93,9 @@
 }
 
 .footer-space {
-    height: 20px;
+    height: 30px;
     width: 100%;
-    background-color:#F3F2EF;
-    border-top: 1px solid rgb(213, 213, 213);
+    background-color:transparent;
 }
 
 .side1 {
@@ -126,6 +133,8 @@
 .create-comm {
     text-align: center;
 }
+
+.create-comm > h1 {}
 
 input[type=search]{
     padding-left: 20px;

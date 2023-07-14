@@ -65,6 +65,7 @@ export default function Feed() {
 
 
   return (
+    <div className='background-color-container'>
     <div className='feed-container'>
         <div className='navbar-import'>
           <Navbar />
@@ -112,6 +113,7 @@ export default function Feed() {
         </div>
         <div className='footer-space'>
         </div>
+    </div>
     </div>
   )
 }
