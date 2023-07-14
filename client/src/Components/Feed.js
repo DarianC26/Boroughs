@@ -9,14 +9,14 @@ export default function Feed() {
     const [comm_create, setNewComm] = useState('');
     const [postlist, setList] = useState([]);
     const total = useRef(5);
-    const count = useRef(0.75);
+    const length = useRef(0);
     
-    var user;
+    const [user, setUser] = useState('');
 
     useEffect(() => {
       const logged = localStorage.getItem("user");
       if (logged) {
-        user = logged;
+        setUser(JSON.parse(logged));
         axios.get('http://localhost:3001/getFeed', {params: {total: total.current}}).then((response) => {
           setList(response.data);
         });
@@ -27,20 +27,26 @@ export default function Feed() {
     }, []);
 
     useEffect(() => {
-      const scrollable = document.querySelector('.posts')
-      let scrollH = scrollable.scrollHeight;
+      length.current = postlist;
+    }, [postlist]);
 
-      scrollable.addEventListener("scroll", e => {
-        if(scrollable.scrollTop > (scrollH * count.current)) {
+    useEffect(() => {
+      window.addEventListener("scroll", e => {
+        if ((window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {
           axios.get('http://localhost:3001/getFeed', {params: {total: total.current+5}}).then((response) => {
-            setList(response.data);
-            total.current = (total.current+5);
+              setList(response.data);
+              if (total.current > length.current.length) {
+                total.current = length.current.length;
+                console.log(total.current, length.current.length);
+                return
+              }
+              else {
+                total.current = (total.current+5);
+              }
           });
-          count.current = count.current + 1;
-          console.log(count.current, total.current);
         }
       })
-    }, [count.current])
+    }, [])
 
     function communityPost(e) {
       setNewComm(e.target.value);
@@ -67,7 +73,8 @@ export default function Feed() {
         <div className='feed-content'>
             <div className='side1'>
                 <div className='profile-corner'>
-                  hi
+                  <h1>Profile</h1>
+                  <h2>{user.username}</h2>
                 </div>
             </div>
             <div className='center'>

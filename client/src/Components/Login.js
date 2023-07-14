@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import './Login.css';
 
@@ -52,7 +52,7 @@ export default function Login() {
             </button>
           </div>
           <p className="forgot-password text-right mt-2">
-            Forgot <a href="#">password?</a>
+            <br></br>
           </p>
         </div>
       </div>
