@@ -107,11 +107,10 @@
 
 .profile-corner {
     height: 50vh;
-    width: 20vw;
+    width: 23vw;
     background-color: white;
     border-radius: 10px;
     position: fixed;
-
 }
 
 .side2 {
@@ -123,7 +122,7 @@
 
 .community-tab {
     height: 60vh;
-    width: 22.5vw;
+    width: 25vw;
     background-color: white;
     border-radius: 10px;
     position: fixed;

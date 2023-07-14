@@ -2,16 +2,24 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 import './Navbar.css'
+import SearchRes from './SearchRes';
 
 export default function Navbar() {
 
     const [input, setInput] = useState('');
+    const [search, setSearch] = useState([]);
 
     function getData(e) {
-        axios.get('http://localhost:3001/getUsers', {params: {search: e}}).then((response) => {
+        if (e === '') {
+            setSearch([]);
+        }
+        else {
+            axios.get('http://localhost:3001/getUsers', {params: {search: e}}).then((response) => {
             let results = response;
+            setSearch(results.data);
             console.log(results);
         })
+    }
     }
 
     function handleChange(e) {
@@ -29,7 +37,9 @@ export default function Navbar() {
                 </div>
 
                 <div className='search-bar'>
-                    <input type='search' placeholder='Search Boroughs' value={input} onInput={(e) => handleChange(e.target.value)}></input>
+                    <input type='search' placeholder='Search Boroughs' value={input} onChange={(e) => handleChange(e.target.value)}></input>
+                    <div className='search-res'>
+                </div>
                 </div>
 
                 <div className='s-button'>
@@ -37,6 +47,11 @@ export default function Navbar() {
                 </div>
 
             </div>
+        </div>
+        <div className='search-res'>
+                    {search.map((res) => {
+                        return <SearchRes key={res.username} res={res} />;
+                    })}
         </div>
     </nav>
     )
