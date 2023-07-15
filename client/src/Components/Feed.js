@@ -75,11 +75,6 @@ export default function Feed() {
 
         <div className='feed-content'>
             <div className='side1'>
-                <div className='profile-corner'>
-                  <h1>Profile</h1>
-                  <h2>{user.username}</h2>
-                </div>
-                <img className='place-at-left-bottom' src={image2}></img>
             </div>
             <div className='center'>
 
