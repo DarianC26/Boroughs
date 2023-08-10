@@ -20,7 +20,7 @@
 .feed-content {
     width: 100%;
     display: grid;
-    grid-template-columns: 27.5vw 42.5vw 30vw;
+    grid-template-columns: 20vw 50vw 30vw;
     margin-top: 3vh;
 }
 
@@ -99,15 +99,15 @@
 }
 
 .side1 {
-    width: 27.5vw;
+    width: 20vw;
     height: 100%;
     display: flex;
     justify-content: center;
 }
 
 .profile-corner {
-    height: 50vh;
-    width: 23vw;
+    width: 15vw;
+    height: 40vh;
     background-color: white;
     border-radius: 10px;
     position: fixed;
@@ -122,11 +122,10 @@
 
 .community-tab {
     height: 60vh;
-    width: 25vw;
+    width: 20vw;
     background-color: white;
     border-radius: 10px;
     position: fixed;
-    
 }
 
 .create-comm {
@@ -150,7 +149,7 @@ input[type=search]{
 
 .place-at-left-bottom {
     height: 30vh;
-    width: 27.5vw;
+    width: 20vw;
     position: fixed;
     bottom: 0px;
     left: 0px;

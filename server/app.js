@@ -136,6 +136,12 @@ app.get('/getUsers', async (req, res) => {
     res.send(test);
 })
 
+app.get('/getUser', async (req, res) => {
+    searchparam = req.query.username;
+    const user = await UserModel.find({username:searchparam});
+    res.send(user)
+})
+
 // U operations
 
 // D operations
@@ -188,7 +194,8 @@ app.post('/loginUser', async (req, res) => {
     }
 });
 
-app.post('/addFriend/:username', async (req, res) => {
-    
+app.post('/addFriend', async (req, res) => {
+    const friend = req.body;
 })
+
 app.listen(3001);

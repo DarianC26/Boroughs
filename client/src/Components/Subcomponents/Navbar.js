@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 import './Navbar.css'
@@ -8,6 +8,7 @@ export default function Navbar() {
 
     const [input, setInput] = useState('');
     const [search, setSearch] = useState([]);
+    const [user, setUser] = useState('');
 
     function getData(e) {
         if (e === '') {
@@ -21,6 +22,11 @@ export default function Navbar() {
         })
     }
     }
+
+    useEffect(() => {
+        const logged = localStorage.getItem("user");
+        setUser(JSON.parse(logged));
+    }, [])
 
     function handleChange(e) {
         setInput(e);
@@ -43,13 +49,14 @@ export default function Navbar() {
                 </div>
 
                 <div className='s-button'>
-                    <Link className='profile-link' to='/profile'>Profile</Link>
+                    <Link className='profile-link' to='/profile' query={{ the: user}}>Profile</Link>
                 </div>
 
             </div>
         </div>
         <div className='search-res'>
                     {search.map((res) => {
+                        console.log(res);
                         return <SearchRes key={res.username} res={res} />;
                     })}
         </div>
