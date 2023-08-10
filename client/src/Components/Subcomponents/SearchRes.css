@@ -3,3 +3,7 @@
     width: 42.5vw;
     background-color: white;
 }
+
+.testing-rel:hover {
+    background-color: rgb(202, 202, 202);
+}
