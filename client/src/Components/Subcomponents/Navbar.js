@@ -49,7 +49,7 @@ export default function Navbar() {
                 </div>
 
                 <div className='s-button'>
-                    <Link className='profile-link' to='/profile' query={{ the: user}}>Profile</Link>
+                    <Link className='profile-link' to='/profile'>Profile</Link>
                 </div>
 
             </div>
