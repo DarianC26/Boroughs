@@ -23,6 +23,13 @@ export default function Profile() {
         }
     }, [])
 
+    useEffect(() => {
+        if(username == null) {
+            const button = document.getElementsByClassName("add-friend-button");
+            button[0].style.display = 'none';
+        }
+    }, [])
+
     function addFriend() {
         axios.post('http://localhost:3001/addFriend', {
             user,
@@ -32,6 +39,15 @@ export default function Profile() {
 
     return (
         <div className='profile-container'>
+            <div className='username-container'>{user.username}</div>
+                <br></br>
+                <div className='username-container'>{user.email}</div>
+                <br></br>
+                <div className='username-container'>{user.firstName}</div>
+                <br></br>
+                <div className='username-container'>{user.lastName}</div>
+                <br></br>
+            <div className='username-container'>{user.age}</div>
             <button className='add-friend-button' onClick={addFriend}>Add Friend</button>
         </div>
     )
