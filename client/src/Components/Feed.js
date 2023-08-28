@@ -79,6 +79,15 @@ export default function Feed() {
                   <h1>Profile</h1>
                   <h2>{user.username}</h2>
                 </div>
+                <div className='page-select-tab'>
+                  <a href="#">Home</a>
+                  <a href="#">Explore</a>
+                  <a href="#">Notifications</a>
+                  <a href="#">Messages</a>
+                  <a href="#">Saved</a>
+                  <a href="#">Friends</a>
+                  <a href="#">Settings</a>
+                </div>
                 <img className='place-at-left-bottom' src={image2}></img>
             </div>
             <div className='center'>

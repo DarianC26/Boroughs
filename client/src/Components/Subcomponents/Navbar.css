@@ -25,7 +25,7 @@ nav {
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-columns: 27.5vw 42.5vw 30vw;
+    grid-template-columns: 25vw 50vw 25vw;
     background-color: rgb(245, 245, 245);
 }
 
