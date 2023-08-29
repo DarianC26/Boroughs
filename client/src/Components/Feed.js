@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react'
+import io from "socket.io-client";
 import axios from 'axios';
 import './Feed.css';
 import Post from './Subcomponents/Posts';
@@ -12,6 +13,7 @@ export default function Feed() {
     const [postlist, setList] = useState([]);
     const total = useRef(5);
     const length = useRef(0);
+    var socket;
     
     const [user, setUser] = useState('');
 
@@ -26,7 +28,18 @@ export default function Feed() {
       else {
         window.location.href = 'http://localhost:3000/login';
       }
+
+      socket = io.connect("http://localhost:8800");
+      socket.emit("add-user", JSON.parse(logged).username);
+      return () => {
+        socket.disconnect();
+      };
+
     }, []);
+
+    useEffect(() => {
+  
+  }, []);
 
     useEffect(() => {
       length.current = postlist;
