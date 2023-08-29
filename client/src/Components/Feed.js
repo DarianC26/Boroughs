@@ -68,11 +68,12 @@ export default function Feed() {
 
   return (
     <div className='background-color-container'>
-    <div className='feed-container'>
-        <div className='navbar-import'>
-          <Navbar />
-        </div>
+        <div className='feed-container'>
+            <div className='navbar-import'>
+              <Navbar />
+            </div>
 
+        <div className='thebiggest'>
         <div className='feed-content'>
             <div className='side1'>
                 <div className='profile-corner'>
@@ -90,6 +91,7 @@ export default function Feed() {
                 </div>
                 <img className='place-at-left-bottom' src={image2}></img>
             </div>
+
             <div className='center'>
 
                 <div className='user-post'>
@@ -110,6 +112,7 @@ export default function Feed() {
                     })}
                 </div>
             </div>
+
             <div className='side2'>
               <div className='community-tab'>
                 <div className='create-comm'>
@@ -123,7 +126,11 @@ export default function Feed() {
               </div>
               <img className='place-at-bottom' src={image1}></img>
             </div>
+
         </div>
+        </div>
+
+
         <div className='footer-space'>
         </div>
     </div>

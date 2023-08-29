@@ -1,8 +1,15 @@
+@font-face {
+    font-family: 'WILDWORLD';
+    src: url('./Assets/WILD\ WORLD.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .home-container {
     height: 100vh;
     width: 100vw;
     background-image: url('./images/homebackground.png');
-    background-size: 100vw 90vh;
+    background-size: 100vw 100vh;
     background-repeat:no-repeat;
     display: flex;
     justify-content: center;
@@ -11,23 +18,103 @@
 .slogan-text {
     margin-top: 25vh;
     height: 300px;
-    width: 500px;
 }
 
 .typewriter {
     text-align: center;
+    width: auto;
+    color: white;
+    -webkit-text-stroke: 0.4px rgb(219, 219, 219); /* width and color */
+}
+
+.bottom-text {
+    margin-top: 30px;
+    width: 60vw;
+    padding-right: 10vw;
+    padding-left: 10vw;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.bottom-text > p {
+    font-size: 1.5vw;
 }
 
 .typewriter > h1 {
     overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: .15em solid orange; /* The typwriter cursor */
+    border-right: .15em solid black; /* The typwriter cursor */
     white-space: nowrap; /* Keeps the content on a single line */
     margin: 0 auto; /* Gives that scrolling effect as the typing happens */
     letter-spacing: .15em; /* Adjust as needed */
     animation: 
       typing 3.5s steps(40, end),
       blink-caret .75s step-end infinite;
+    font-family: "WILDWORLD";
+    font-size:  4.25vw;
   }
+
+  .login-signup-btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .home-login-btn{
+    background: #2929ff;
+    border-radius: 999px;
+    box-shadow: #1919ff 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+}
+
+.home-signup-btn{
+    background: #2929ff;
+    border-radius: 999px;
+    box-shadow: #1919ff 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+}
+
+.login-link {
+    text-decoration: none;
+    color: white;
+}
+
+.signup-link {
+    text-decoration: none;
+    color: white;
+}
   
   /* The typing effect */
   @keyframes typing {
@@ -38,5 +125,9 @@
   /* The typewriter cursor effect */
   @keyframes blink-caret {
     from, to { border-color: transparent }
-    50% { border-color: orange; }
+    50% { border-color: black; }
+  }
+
+  @media screen and (max-width: 800px){
+    
   }

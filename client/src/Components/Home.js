@@ -28,6 +28,17 @@ export default function Home() {
         <div className='typewriter'>
           <h1>Imagine a place</h1>
         </div>
+        <div className='bottom-text'>
+          <p>...where you can belong to a school club, a gaming group, or a worldwide art community. Where just you and a handful of friends can spend time together. A place that makes it easy to talk every day and hang out more often.</p>
+        </div>
+        <div className='login-signup-btns'>
+          <button className='home-login-btn'>
+            <Link className='login-link' to='/login'>Log In</Link>
+          </button>
+          <button className='home-signup-btn'>
+            <Link className='signup-link' to='/signup'>Sign Up</Link>
+          </button>
+        </div>
       </div>
     </div>
   );

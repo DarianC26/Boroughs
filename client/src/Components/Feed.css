@@ -20,10 +20,18 @@
     top: 0;
 }
 
+.thebiggest {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .feed-content {
-    width: 100%;
+    width: 90%;
     display: grid;
-    grid-template-columns: 25vw 50vw 25vw;
+    grid-template-columns: 20vw 45vw 25vw;
     margin-top: 3vh;
 }
 
@@ -36,7 +44,7 @@
 
 .user-post {
     height: 10vh;
-    width: 100%;
+    width: 45vw;
     border-radius: 150px;
     background-color: white;
     border: 1px solid rgb(213, 213, 213)
@@ -102,14 +110,14 @@
 }
 
 .side1 {
-    width: 25vw;
+    width: 20vw;
     height: 100%;
     display: flex;
     justify-content: center;
 }
 
 .profile-corner {
-    width: 20vw;
+    width: 15vw;
     height: 10vh;
     background-color: white;
     border-radius: 10px;
@@ -119,7 +127,7 @@
 .page-select-tab {
     padding-top: 1vh;
     padding-top: 1vh;
-    width: 20vw;
+    width: 15vw;
     height: 44vh;
     top: 25vh;
     border-radius: 10px;
@@ -131,7 +139,6 @@
 .page-select-tab > a {
     width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
     height: 6vh;
     text-decoration: none;
@@ -168,7 +175,7 @@ input[type=search]{
 
 .place-at-bottom {
     height: 30vh;
-    width: 30vw;
+    width: 25vw;
     position: fixed;
     bottom: 0px;
     z-index: 1;
@@ -178,7 +185,7 @@ input[type=search]{
 
 .place-at-left-bottom {
     height: 30vh;
-    width: 20vw;
+    width: 15vw;
     position: fixed;
     bottom: 0px;
     z-index: 1;
