@@ -76,8 +76,8 @@ export default function Feed() {
         <div className='feed-content'>
             <div className='side1'>
                 <div className='profile-corner'>
-                  <h1>Profile</h1>
-                  <h2>{user.username}</h2>
+                  <p>Profile</p>
+                  <p>{user.username}</p>
                 </div>
                 <div className='page-select-tab'>
                   <a href="#">Home</a>

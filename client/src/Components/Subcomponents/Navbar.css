@@ -70,6 +70,7 @@ nav {
 }
 
 .search-res {
+    width: 50vw;
     position: absolute;
-    left: 27.5vw;
+    left: 25vw;
 }

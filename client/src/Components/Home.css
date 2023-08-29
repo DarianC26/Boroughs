@@ -1,104 +1,42 @@
-@font-face {
-    font-family: Bajigoor;
-    src: url(./Assets/Bajigoor-X3P5a.ttf);
-  }
-
-body {
-    padding: 0;
-    margin: 0;
-}
-
 .home-container {
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    grid-template-rows: 80% 20%;
-    position: relative;
-}
-
-.home-wrapper {
-    width: 100vw;
-    height: 100%;
-    background-color: #FFFF93;
-    border-bottom: 2px solid #ffff1b;
-    display: grid;
-    grid-template-rows: 10% 90%;
-}
-
-.image-wrapper {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.background-image {
-    height: 100%;
-    width: 100%;
-    background-image: url(./images/final_background.png);
-    background-size: 800px 500px;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.nav-bar {
-    height: 10vh;
-    width: 100vw;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    padding-top: 10px;
-    text-align: right;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-}
-
-.nav-links {
-    height: 100%;
-    width: 80%;
-    display: flex;
-    justify-content: space-around;
-}
-
-nav ul li {
-    display: inline-block;
-    font-family: Bajigoor;
-    color: rgb(104, 104, 255);
-    font-size: 25px;
-}
-
-.transitioning {
-    width: 100%;
-    height: 100%;
-    -moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
-    -webkit-user-select: none;
-    -ms-user-select: none; /* From IE10 only */
-    user-select: none; /* Not valid CSS yet, as of July 2012 */
-
-    -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
-}
-
-.transitioning img {
-    pointer-events: none;
-}
-
-#cloud {
-    height: 27%;
-    width: 100%;
-    position: absolute;
-    bottom: 10%;
-}
-
-#clouds {
-    height: 20%;
-    width: 100%;
-    position: absolute;
-}
-
-.second-page {
     height: 100vh;
     width: 100vw;
+    background-image: url('./images/homebackground.png');
+    background-size: 100vw 90vh;
+    background-repeat:no-repeat;
+    display: flex;
+    justify-content: center;
 }
+
+.slogan-text {
+    margin-top: 25vh;
+    height: 300px;
+    width: 500px;
+}
+
+.typewriter {
+    text-align: center;
+}
+
+.typewriter > h1 {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+  }
