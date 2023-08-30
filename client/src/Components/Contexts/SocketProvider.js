@@ -7,7 +7,7 @@ export function useSocket() {
   return useContext(SocketContext)
 }
 
-export function SocketProvider({children }) {
+export function SocketProvider({ user, children }) {
   const [socket, setSocket] = useState()
 
   useEffect(() => {
@@ -15,6 +15,7 @@ export function SocketProvider({children }) {
       'http://localhost:8800'
     )
     console.log(newSocket)
+    newSocket.emit("add-user", user)
     setSocket(newSocket)
 
     return () => newSocket.disconnect()

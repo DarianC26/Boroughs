@@ -13,9 +13,11 @@ import Profile from './Components/Subcomponents/Profile';
 import Messages from './Components/Subcomponents/Messages'
 import { SocketProvider } from './Components/Contexts/SocketProvider';
 
+const user = JSON.parse(localStorage.getItem("user"));
+
 function App() {
   return (
-    <SocketProvider>
+    <SocketProvider user={user.username} >
       <BrowserRouter>
         <div className='paths'>
           <Routes>

@@ -53,12 +53,6 @@ export default function Feed() {
       })
     }, [])
 
-    useEffect(() => {
-      if(socket != null) {
-        socket.emit("add-user", JSON.parse(logged).username)
-      }
-    }, [socket]);
-
     function communityPost(e) {
       setNewComm(e.target.value);
     }
