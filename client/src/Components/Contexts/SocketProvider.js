@@ -14,6 +14,7 @@ export function SocketProvider({children }) {
     const newSocket = io(
       'http://localhost:8800'
     )
+    console.log(newSocket)
     setSocket(newSocket)
 
     return () => newSocket.disconnect()

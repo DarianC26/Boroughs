@@ -6,20 +6,19 @@ export default function Profile() {
 
     const { userId } = useParams()
     const [post, setPost] = useState('')
-    const logged = localStorage.getItem('user');
+    const logged = JSON.parse(localStorage.getItem('user'));
     const [searchParams] = useSearchParams();
     const username = searchParams.get('user');
     const [user, setUser] = useState('');
 
     useEffect(() => {
-        const obj = JSON.parse(logged);
         if(username != null) {
         axios.get('http://localhost:3001/getUser', {params: {username: username}}).then((response) => {
             setUser(response.data[0]);
         })
         }
         else {
-            setUser(obj);
+            setUser(logged);
         }
     }, [])
 

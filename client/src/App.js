@@ -10,6 +10,7 @@ import Feed from './Components/Feed';
 import Post from './Components/Subcomponents/PostDetail'
 import PostCreation from './Components/PostCreation';
 import Profile from './Components/Subcomponents/Profile';
+import Messages from './Components/Subcomponents/Messages'
 import { SocketProvider } from './Components/Contexts/SocketProvider';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path='/post/:postId' element={<Post />}></Route>
             <Route path='/createPost' element={<PostCreation />}></Route>
             <Route path='/profile' element={<Profile />}></Route>
+            <Route path='/messages' element={<Messages />}></Route>
           </Routes>
         </div>
       </BrowserRouter>

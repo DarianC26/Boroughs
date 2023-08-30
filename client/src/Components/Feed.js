@@ -1,5 +1,4 @@
 import React, {useEffect, useRef, useState} from 'react'
-import io from "socket.io-client";
 import axios from 'axios';
 import './Feed.css';
 import Post from './Subcomponents/Posts';
@@ -7,6 +6,7 @@ import Navbar from './Subcomponents/Navbar';
 import image1 from './images/viewersbackground.svg';
 import image2 from './images/boardgames.svg';
 import { useSocket } from './Contexts/SocketProvider';
+import { Link } from 'react-router-dom'
 
 export default function Feed() {
 
@@ -93,7 +93,7 @@ export default function Feed() {
                   <a href="#">Home</a>
                   <a href="#">Explore</a>
                   <a href="#">Notifications</a>
-                  <a href="#">Messages</a>
+                  <Link className='messages-link' to='/messages'>Messages</Link>
                   <a href="#">Saved</a>
                   <a href="#">Friends</a>
                   <a href="#">Settings</a>
