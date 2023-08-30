@@ -6,6 +6,7 @@ import Post from './Subcomponents/Posts';
 import Navbar from './Subcomponents/Navbar';
 import image1 from './images/viewersbackground.svg';
 import image2 from './images/boardgames.svg';
+import { useSocket } from './Contexts/SocketProvider';
 
 export default function Feed() {
 
@@ -13,12 +14,12 @@ export default function Feed() {
     const [postlist, setList] = useState([]);
     const total = useRef(5);
     const length = useRef(0);
-    var socket;
     
     const [user, setUser] = useState('');
+    const logged = localStorage.getItem("user")
+    let socket = useSocket();
 
     useEffect(() => {
-      const logged = localStorage.getItem("user");
       if (logged) {
         setUser(JSON.parse(logged));
         axios.get('http://localhost:3001/getFeed', {params: {total: total.current}}).then((response) => {
@@ -28,18 +29,7 @@ export default function Feed() {
       else {
         window.location.href = 'http://localhost:3000/login';
       }
-
-      socket = io.connect("http://localhost:8800");
-      socket.emit("add-user", JSON.parse(logged).username);
-      return () => {
-        socket.disconnect();
-      };
-
     }, []);
-
-    useEffect(() => {
-  
-  }, []);
 
     useEffect(() => {
       length.current = postlist;
@@ -62,6 +52,12 @@ export default function Feed() {
         }
       })
     }, [])
+
+    useEffect(() => {
+      if(socket != null) {
+        socket.emit("add-user", JSON.parse(logged).username)
+      }
+    }, [socket]);
 
     function communityPost(e) {
       setNewComm(e.target.value);

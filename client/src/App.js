@@ -10,22 +10,25 @@ import Feed from './Components/Feed';
 import Post from './Components/Subcomponents/PostDetail'
 import PostCreation from './Components/PostCreation';
 import Profile from './Components/Subcomponents/Profile';
+import { SocketProvider } from './Components/Contexts/SocketProvider';
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className='paths'>
-        <Routes>
-          <Route path='/' element={<Home />}></Route>
-          <Route path='/login' element={<Login />}></Route>
-          <Route path='/signup' element={<Signup />}></Route>
-          <Route path='/feed' element={<Feed />}></Route>
-          <Route path='/post/:postId' element={<Post />}></Route>
-          <Route path='/createPost' element={<PostCreation />}></Route>
-          <Route path='/profile' element={<Profile />}></Route>
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <SocketProvider>
+      <BrowserRouter>
+        <div className='paths'>
+          <Routes>
+            <Route path='/' element={<Home />}></Route>
+            <Route path='/login' element={<Login />}></Route>
+            <Route path='/signup' element={<Signup />}></Route>
+            <Route path='/feed' element={<Feed />}></Route>
+            <Route path='/post/:postId' element={<Post />}></Route>
+            <Route path='/createPost' element={<PostCreation />}></Route>
+            <Route path='/profile' element={<Profile />}></Route>
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </SocketProvider>
   );
 }
 
