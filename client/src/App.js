@@ -10,22 +10,29 @@ import Feed from './Components/Feed';
 import Post from './Components/Subcomponents/PostDetail'
 import PostCreation from './Components/PostCreation';
 import Profile from './Components/Subcomponents/Profile';
+import Messages from './Components/Subcomponents/Messages'
+import { SocketProvider } from './Components/Contexts/SocketProvider';
+
+const user = JSON.parse(localStorage.getItem("user"));
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className='paths'>
-        <Routes>
-          <Route path='/' element={<Home />}></Route>
-          <Route path='/login' element={<Login />}></Route>
-          <Route path='/signup' element={<Signup />}></Route>
-          <Route path='/feed' element={<Feed />}></Route>
-          <Route path='/post/:postId' element={<Post />}></Route>
-          <Route path='/createPost' element={<PostCreation />}></Route>
-          <Route path='/profile' element={<Profile />}></Route>
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <SocketProvider user={user.username} >
+      <BrowserRouter>
+        <div className='paths'>
+          <Routes>
+            <Route path='/' element={<Home />}></Route>
+            <Route path='/login' element={<Login />}></Route>
+            <Route path='/signup' element={<Signup />}></Route>
+            <Route path='/feed' element={<Feed />}></Route>
+            <Route path='/post/:postId' element={<Post />}></Route>
+            <Route path='/createPost' element={<PostCreation />}></Route>
+            <Route path='/profile' element={<Profile />}></Route>
+            <Route path='/messages' element={<Messages />}></Route>
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </SocketProvider>
   );
 }
 

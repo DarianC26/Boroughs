@@ -1,104 +1,133 @@
 @font-face {
-    font-family: Bajigoor;
-    src: url(./Assets/Bajigoor-X3P5a.ttf);
-  }
-
-body {
-    padding: 0;
-    margin: 0;
+    font-family: 'WILDWORLD';
+    src: url('./Assets/WILD\ WORLD.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 .home-container {
-    width: 100vw;
     height: 100vh;
-    display: grid;
-    grid-template-rows: 80% 20%;
-    position: relative;
-}
-
-.home-wrapper {
     width: 100vw;
-    height: 100%;
-    background-color: #FFFF93;
-    border-bottom: 2px solid #ffff1b;
-    display: grid;
-    grid-template-rows: 10% 90%;
-}
-
-.image-wrapper {
-    height: 100%;
-    width: 100%;
+    background-image: url('./images/homebackground.png');
+    background-size: 100vw 100vh;
+    background-repeat:no-repeat;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
-.background-image {
-    height: 100%;
-    width: 100%;
-    background-image: url(./images/final_background.png);
-    background-size: 800px 500px;
-    background-repeat: no-repeat;
-    background-position: center;
+.slogan-text {
+    margin-top: 25vh;
+    height: 300px;
 }
 
-.nav-bar {
-    height: 10vh;
-    width: 100vw;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    padding-top: 10px;
-    text-align: right;
+.typewriter {
+    text-align: center;
+    width: auto;
+    color: white;
+    -webkit-text-stroke: 0.4px rgb(219, 219, 219); /* width and color */
+}
+
+.bottom-text {
+    margin-top: 30px;
+    width: 60vw;
+    padding-right: 10vw;
+    padding-left: 10vw;
+    text-align: center;
     display: flex;
     justify-content: center;
-    align-items: center;
-    z-index: 1;
+    color: white;
 }
 
-.nav-links {
-    height: 100%;
-    width: 80%;
+.bottom-text > p {
+    font-size: 1.5vw;
+}
+
+.typewriter > h1 {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid black; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+    font-family: "WILDWORLD";
+    font-size:  4.25vw;
+  }
+
+  .login-signup-btns {
+    width: 100%;
     display: flex;
     justify-content: space-around;
-}
+    align-items: center;
+  }
 
-nav ul li {
-    display: inline-block;
-    font-family: Bajigoor;
-    color: rgb(104, 104, 255);
-    font-size: 25px;
-}
-
-.transitioning {
-    width: 100%;
-    height: 100%;
-    -moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
+  .home-login-btn{
+    background: #2929ff;
+    border-radius: 999px;
+    box-shadow: #1919ff 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
     -webkit-user-select: none;
-    -ms-user-select: none; /* From IE10 only */
-    user-select: none; /* Not valid CSS yet, as of July 2012 */
-
-    -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
 }
 
-.transitioning img {
-    pointer-events: none;
+.home-signup-btn{
+    background: #2929ff;
+    border-radius: 999px;
+    box-shadow: #1919ff 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
 }
 
-#cloud {
-    height: 27%;
-    width: 100%;
-    position: absolute;
-    bottom: 10%;
+.login-link {
+    text-decoration: none;
+    color: white;
 }
 
-#clouds {
-    height: 20%;
-    width: 100%;
-    position: absolute;
+.signup-link {
+    text-decoration: none;
+    color: white;
 }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: black; }
+  }
 
-.second-page {
-    height: 100vh;
-    width: 100vw;
-}
+  @media screen and (max-width: 800px){
+    
+  }

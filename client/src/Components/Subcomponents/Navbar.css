@@ -11,8 +11,11 @@ nav {
 .nav-background-container {
     min-height: 7.5vh;
     width: 100vw;
-    background-color: rgb(245, 245, 245);
-    border-bottom: 1px solid rgb(236, 236, 236);
+    background-color: rgb(182, 200, 255);
+    border-bottom: 1px solid rgb(177, 196, 254);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo-svg {
@@ -23,10 +26,10 @@ nav {
 .nav-container {
     padding-top:3px;
     height: 100%;
-    width: 100%;
+    width: 90vw;
     display: grid;
-    grid-template-columns: 27.5vw 42.5vw 30vw;
-    background-color: rgb(245, 245, 245);
+    grid-template-columns: 20vw 45vw 25vw;
+    background-color: rgb(182, 200, 255);
 }
 
 .logo-div {
@@ -38,7 +41,7 @@ nav {
 .logo-link {
     text-decoration: none;
     font-size: 35px;
-    font-family: Klavika;
+    font-family: WILDWORLD;
     color: #404EEC;
 }
 
@@ -65,11 +68,12 @@ nav {
 .profile-link {
     text-decoration: none;
     font-size: 25px;
-    font-family: Klavika;
+    font-family: WILDWORLD;
     color: #404EEC;
 }
 
 .search-res {
+    width: 50vw;
     position: absolute;
-    left: 27.5vw;
+    left: 25vw;
 }

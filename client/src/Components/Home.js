@@ -24,28 +24,21 @@ export default function Home() {
 
   return (
     <div className='home-container'>
-      <div className='home-wrapper'>
-        <nav className='nav-bar'>
-          <ul className='nav-links'>
-                <Link to="/login">
-                    <li className='linker'>Login</li>
-                </Link>
-                <Link to="/signup">
-                    <li className='linker'>Sign Up</li>
-                </Link>
-            </ul>
-        </nav>
-        <div className='image-wrapper'>
-          <div className='background-image'>
-          </div>
+      <div className='slogan-text'>
+        <div className='typewriter'>
+          <h1>Imagine a place</h1>
         </div>
-      </div>
-      <div className='transitioning'>
-        <img id='cloud' src={image1}></img>
-        <img id='clouds' src={image2}></img>
-      </div>
-      <div className='second-page'>
-        <h1>hi</h1>
+        <div className='bottom-text'>
+          <p>...where you can belong to a school club, a gaming group, or a worldwide art community. Where just you and a handful of friends can spend time together. A place that makes it easy to talk every day and hang out more often.</p>
+        </div>
+        <div className='login-signup-btns'>
+          <button className='home-login-btn'>
+            <Link className='login-link' to='/login'>Log In</Link>
+          </button>
+          <button className='home-signup-btn'>
+            <Link className='signup-link' to='/signup'>Sign Up</Link>
+          </button>
+        </div>
       </div>
     </div>
   );
