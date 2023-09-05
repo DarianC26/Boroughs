@@ -195,7 +195,37 @@ app.post('/loginUser', async (req, res) => {
 });
 
 app.post('/addFriend', async (req, res) => {
-    const friend = req.body;
+    const body = req.body
+    const sendRelation = {
+        _id: body.logged.username,
+        friends: [{fStatus: 0,
+            username: body.user.username
+        }]
+    }
+    const receiveRelation = {
+        _id: body.user.username,
+        friends: [{fStatus: 0,
+            username: body.logged.username
+        }]
+    }
+    var sender = await FriendsModel.findById({_id: body.logged.username});
+    var receiver = await FriendsModel.findById({_id: body.user.username});
+    if(sender == null) {
+        sender = new FriendsModel(sendRelation);
+    }
+    else {
+        sender.friends = sender.friends.concat(sendRelation.friends);
+    }
+
+    if(receiver == null) {
+        receiver = new FriendsModel(receiveRelation);
+    }
+    else {
+        receiver.friends = receiver.friends.concat(receiveRelation.friends);
+    }
+
+    await sender.save()
+    await receiver.save()
 })
 
 app.listen(3001);

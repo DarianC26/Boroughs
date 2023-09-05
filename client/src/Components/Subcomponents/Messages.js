@@ -13,6 +13,7 @@ export default function Messages() {
             });
 
             socket.on("receive-message", (data) => {
+                console.log(data)
                 getMessage(data)
             });
         }
